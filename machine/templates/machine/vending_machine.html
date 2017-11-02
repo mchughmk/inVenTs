@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>inVenTs Vending Machine</title>
+    </head>
+    <body>
+        <h1>
+            Gumball Machine
+        </h1>
+        <form method="POST" action="{{ self.url }}">
+            {% csrf_token %}
+            <div>
+                {% if not machine.has_money %}
+                <button id="insert_coin" name="insert_coin">Insert Coin</button>
+                {% else %}
+                <button id="operate" name="operate" text="Dispense">Dispense</button>
+                {% endif %}
+            </div>
+            <br />
+            <div>
+                {{ message }}
+            </div>
+        </form>
+    </body>
+</html>
