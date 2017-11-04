@@ -12,9 +12,9 @@ def index(request, *args, **kwargs):
     if 'insert_coin' in request.POST:
         insert_coin(machine)
         message = 'Balance: $0.25'
-    elif 'operate' in request.POST:
+    elif 'item' in request.POST:
         if operate(machine):
-            message = 'Gumball dispensed'
+            message = '{0} dispensed'.format(request.POST.get('item'), '')
         else:
             message = 'No money inserted'
     
