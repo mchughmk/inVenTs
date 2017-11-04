@@ -16,3 +16,7 @@ class MachineTests(TestCase):
     def test_when_has_money_operate_returns_true(self):
         self.machine.money_inserted = 25
         self.assertTrue(self.machine.has_money())
+        
+    def test_current_balance(self):
+        self.machine.money_inserted = 25
+        self.assertEqual(0.25, self.machine.current_balance)

@@ -9,14 +9,24 @@
         <form method="POST" action="{{ self.url }}">
             {% csrf_token %}
             <div>
-                {% if not machine.has_money %}
-                <button id="insert_coin" name="insert_coin">Insert Coin</button>
-                {% else %}
+                <h2>
+                    Insert Coins
+                </h2>
+                <button id="nickel" name="coin_entered" value="5">5</button>
+                <button id="dime" name="coin_entered" value="10">10</button>
+                <button id="quarter" name="coin_entered" value="25">25</button>
+                <div>
+                    Current Balance: ${{ machine.current_balance }}
+                </div>
+            </div>
+            <div>
+                <h2>
+                    Products
+                </h2>
                 <button id="gumball" name="item" value="Gumball">Gumball</button>
                 <button id="runts" name="item" value="Runts">Runts</button>
                 <button id="mms" name="item" value="M&Ms">M&Ms</button>
                 <button id="jawbreakers" name="item" value="Jawbreaker">Jawbreaker</button>
-                {% endif %}
             </div>
             <br />
             <div>

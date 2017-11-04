@@ -9,24 +9,23 @@ def index(request, *args, **kwargs):
     machine, created = Machine.objects.get_or_create(id=1)
     
     message = ''
-    if 'insert_coin' in request.POST:
-        insert_coin(machine)
-        message = 'Balance: $0.25'
+    if 'coin_entered' in request.POST:
+        insert_coin(machine, request.POST.get('coin_entered', 0))
     elif 'item' in request.POST:
         if operate(machine):
             message = '{0} dispensed'.format(request.POST.get('item'), '')
         else:
-            message = 'No money inserted'
+            message = 'Item costs 35 cents'
     
     return render(request, 'machine/vending_machine.html', {"machine": machine, "message": message})
 
 # Helpers 
-def insert_coin(machine):    
-    machine.money_inserted = 25
+def insert_coin(machine, amount):    
+    machine.money_inserted += int(amount)
     machine.save()
     
 def operate(machine):
-    if machine.has_money():
+    if machine.money_inserted >= 35:
         machine.money_inserted = 0
         machine.save()
         return True

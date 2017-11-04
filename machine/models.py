@@ -8,3 +8,7 @@ class Machine(models.Model):
 
     def has_money(self):
         return self.money_inserted > 0
+   
+    @property
+    def current_balance(self):
+        return self.money_inserted / 100.0
