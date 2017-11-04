@@ -12,3 +12,13 @@ class Machine(models.Model):
     @property
     def current_balance(self):
         return self.money_inserted / 100.0
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.PositiveIntegerField(default=0)
+    machine = models.ForeignKey(Machine, related_name='products')
+    
+    def __unicode__(self):
+        return self.name
+    

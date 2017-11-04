@@ -23,10 +23,9 @@
                 <h2>
                     Products
                 </h2>
-                <button id="gumball" name="item" value="Gumball">Gumball</button>
-                <button id="runts" name="item" value="Runts">Runts</button>
-                <button id="mms" name="item" value="M&Ms">M&Ms</button>
-                <button id="jawbreakers" name="item" value="Jawbreaker">Jawbreaker</button>
+                {% for product in machine.products.all %}
+                    <button name="item" value="{{ product.name }}">{{ product.name }}</button>
+                {% endfor %}
             </div>
             <br />
             <div>
