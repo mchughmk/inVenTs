@@ -8,7 +8,7 @@ A short problem representative of incremental feature improvement.
     $ cd inVenTs
     $ pip install -r requirements.txt
     $ python manage.py migrate
-    $ python manage.ot createsuperuser
+    $ python manage.py createsuperuser
 
 This will download the code, install the required packages and set up the
 database.
